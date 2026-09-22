@@ -17,10 +17,29 @@ sc = StandardScaler()
 x_train = sc.fit_transform(x_train)
 x_test = sc.transform(x_test)
 
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression()
-classifier.fit(x_train, y_train)
-classifier.get_params()
+#from sklearn.linear_model import LogisticRegression
+#classifier = LogisticRegression()
+#classifier.fit(x_train, y_train)
+#classifier.get_params()
+
+#y_pred = classifier.predict(x_test)
+#from sklearn.svm import SVC
+#classifier = SVC(C=1.0, kernel='rbf', degree=3, gamma='scale')
+#classifier.fit(x_train, y_train)
+#classifier.get_params()
+
+
+#from sklearn.neighbors import KNeighborsClassifier
+#classifier = KNeighborsClassifier()
+#classifier.fit(x_train, y_train)
+
+#from sklearn.naive_bayes import BernoulliNB
+#classifier = BernoulliNB()
+#classifier.fit(x_train, y_train)
+
+from sklearn.tree import DecisionTreeClassifier
+classifier = DecisionTreeClassifier()
+classifier.fit(x_train,y_train)
 
 y_pred = classifier.predict(x_test)
 
@@ -58,12 +77,10 @@ y_pred1 = pd.DataFrame()
 
 d2['y_pred1'] = classifier.predict(M)
 
-import pickle
+#import pickle
 
 
 
-filename = 'logistic_regression_model.pkl'
+#filename = 'logistic_regression_model.pkl'
 
-with open("model_bundle.pkl", "wb") as f:
-    pickle.dump({"model": classifier, "scaler": sc}, f)
-    print("model is successfully pickled.")
+
